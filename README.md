@@ -1,8 +1,28 @@
 # Tic-Tac-Toe
 
-A console-based Tic-Tac-Toe game for two players, written in Java.
+A two-player Tic-Tac-Toe game with both a React web UI and a Java console version.
 
-## How to Play
+## Web UI (React)
+
+Built with Vite + React + TypeScript. Dark-themed, fully interactive in the browser.
+
+**Features:**
+- Click cells to place X or O
+- Status pill shows whose turn it is, the winner, or a draw
+- Winning cells highlight with a glow
+- Undo and New Game buttons
+
+**Run it:**
+
+```bash
+cd ui
+npm install
+npm run dev
+```
+
+Then open http://localhost:5173.
+
+## Console Version (Java)
 
 - Two players take turns: **X** always goes first
 - The board is numbered 1–9, left to right, top to bottom
@@ -10,88 +30,7 @@ A console-based Tic-Tac-Toe game for two players, written in Java.
 - First player to get 3 in a row (horizontally, vertically, or diagonally) wins
 - If all 9 cells are filled with no winner, it's a draw
 
-## Board Layout
-
-```
- 1 | 2 | 3
------------
- 4 | 5 | 6
------------
- 7 | 8 | 9
-```
-
-## Example Game
-
-```
-=== Tic-Tac-Toe ===
-
- 1 | 2 | 3
------------
- 4 | 5 | 6
------------
- 7 | 8 | 9
-
-Player X, enter a number (1-9): 5
-
- 1 | 2 | 3
------------
- 4 | X | 6
------------
- 7 | 8 | 9
-
-Player O, enter a number (1-9): 1
-
- O | 2 | 3
------------
- 4 | X | 6
------------
- 7 | 8 | 9
-
-Player X, enter a number (1-9): 3
-
- O | 2 | X
------------
- 4 | X | 6
------------
- 7 | 8 | 9
-
-Player O, enter a number (1-9): 9
-
- O | 2 | X
------------
- 4 | X | 6
------------
- 7 | 8 | O
-
-Player X, enter a number (1-9): 7
-
- O | 2 | X
------------
- 4 | X | 6
------------
- X | 8 | O
-
-Player X wins!
-```
-
-## Project Structure
-
-```
-src/
-├── main/java/
-│   ├── Main.java    # Entry point
-│   ├── Game.java    # Game loop and player turns
-│   └── Board.java   # Grid logic, win/draw detection
-└── test/java/
-    └── BoardTest.java  # JUnit 5 unit tests
-```
-
-## Requirements
-
-- Java 21+
-- Gradle 9+
-
-## Running the Game
+**Run it:**
 
 ```bash
 gradle run
@@ -99,7 +38,45 @@ gradle run
 
 Or run `Main.java` directly from IntelliJ using the **Run** button.
 
-## Running the Tests
+### Board Layout
+
+```
+ 1 | 2 | 3
+-----------
+ 4 | 5 | 6
+-----------
+ 7 | 8 | 9
+```
+
+## Project Structure
+
+```
+├── src/                        # Java console game
+│   ├── main/java/
+│   │   ├── Main.java           # Entry point
+│   │   ├── Game.java           # Game loop and player turns
+│   │   └── Board.java          # Grid logic, win/draw detection
+│   └── test/java/
+│       └── BoardTest.java      # JUnit 5 unit tests
+└── ui/                         # React web UI
+    └── src/
+        ├── game.ts             # Game logic (win detection, board state)
+        ├── App.tsx             # Main game component
+        └── components/
+            └── Square.tsx      # Individual cell button
+```
+
+## Requirements
+
+### Java (console)
+- Java 21+
+- Gradle 9+
+
+### React (web UI)
+- Node.js 18+
+- npm
+
+## Running Java Tests
 
 ```bash
 gradle test
